@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'css/feed.css' %}" />
+        <title>Feed | notLinkedIn</title>
+    </head>
+    <body>
+        <!-- navbar -->
+        <div class="nav">
+            <nav>
+                <ul class="home-search">
+                    <li>
+                        <a href=""><img
+                            src="{% static 'images/home-logo.svg' %}"
+                            alt="Home"
+                        /></a>
+                    </li>
+                    <li>
+                        <div class="search-container">
+                            <input type="text" placeholder="Search" />
+                            <img
+                                class="search-icon"
+                                src="{% static 'images/search-icon.svg' %}"
+                                alt=""
+                            />
+                        </div>
+                    </li>
+                </ul>
+                <ul class="user-nav">
+                    <li><a href="">
+                        <img src="{% static 'images/nav-home.svg' %}" alt="" /></a>
+                    </li>
+                    <li>
+                        <a href=""><img
+                            src="{% static 'images/nav-network.svg' %}"
+                            alt=""
+                        /></a>
+                    </li>
+                    <a href=""><li>
+                        <img src="{% static 'images/nav-jobs.svg' %}" alt="" /></a>
+                    </li>
+                    <li>
+                        <a href=""><img
+                            src="{% static 'images/nav-messaging.svg' %}"
+                            alt=""
+                        /></a>
+                    </li>
+                    <li>
+                        <a href=""><img
+                            src="{% static 'images/nav-notifications.svg'%}"
+                            alt=""
+                        /></a>
+                    </li>
+                    <li><a href="">
+                        <img
+                            class="user-img"
+                            src="{% static 'images/user.svg' %}"
+                            alt=""
+                        /></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        {% block content %} {% endblock %}
+    </body>
+</html>
