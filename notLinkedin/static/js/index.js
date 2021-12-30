@@ -21,7 +21,3 @@ document
                 .getElementById("label--password")
                 .classList.remove("transform");
     });
-
-document
-    .querySelector(".signup")
-    .addEventListener("click", () => (document.location.href = "/signup"));

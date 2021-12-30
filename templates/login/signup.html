@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <body>
     <div id="app__container">
         <header>
@@ -154,8 +154,8 @@
             </form>
             <div class="footer-app-content-actions">
                 <p>
-                    Already on LinkedIn?
-                    <a class="signin">Sign in</a>
+                    Already on notLinkedIn?
+                    <a href="{% url 'index' %}">Sign in</a>
                 </p>
             </div>
         </main>

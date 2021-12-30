@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <body>
     <div id="app__container">
         <header>
@@ -154,8 +154,8 @@
                     <a>Forgot password?</a>
                 </div>
                 <p>
-                    New to LinkedIn?
-                    <a class="signup">Join now</a>
+                    New to notLinkedIn?
+                    <a href="{% url 'signup' %}">Join now</a>
                 </p>
             </div>
         </main>
