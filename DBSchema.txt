@@ -1,0 +1,26 @@
+MODEL/DB FIELDS
+
+### POST
+id: INT
+user: INT (FOREIGN KEY [USER])
+description: STR
+image: STR (location)
+likes: INT
+comments: STR[]
+post_date: DATE
+
+### USER
+id: INT
+name: STR
+photo: STR
+bio: STR
+email: STR
+phone (optional)
+is_employer: BOOL
+
+## jobs
+id: INT
+title: STR
+job_description: STR
+job_poster: INT (FOREIGN KEY [USER])
+posting_date: DATE
