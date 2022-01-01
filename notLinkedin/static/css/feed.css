@@ -26,7 +26,15 @@ nav {
 ul li {
     width: 100%;
     list-style-type: none;
-    display: inline;
+    display: inline-block;
+}
+ul li a {
+    text-decoration: none;
+}
+
+ul li span {
+    display: block;
+    color: black;
 }
 
 .home-search {
@@ -65,10 +73,13 @@ ul li {
 }
 
 .user-nav {
+    margin: 0;
+    padding: 0;
     margin-left: 10%;
     display: flex;
     flex-basis: 40%;
-    position: relative;
+    /* position: relative; */
+    text-align: center;
 }
 
 .user-nav img {

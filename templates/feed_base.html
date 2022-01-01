@@ -14,9 +14,10 @@
             <nav>
                 <ul class="home-search">
                     <li>
-                        <a href="{% url 'feed' %}"><img
-                            src="{% static 'images/home-logo.svg' %}"
-                            alt="Home"
+                        <a href="{% url 'feed' %}"
+                            ><img
+                                src="{% static 'images/home-logo.svg' %}"
+                                alt="Home"
                         /></a>
                     </li>
                     <li>
@@ -31,36 +32,58 @@
                     </li>
                 </ul>
                 <ul class="user-nav">
-                    <li><a href="{% url 'feed' %}">
-                        <img src="{% static 'images/nav-home.svg' %}" alt="" /></a>
+                    <li>
+                        <a href="{% url 'feed' %}">
+                            <img
+                                class="feed"
+                                src="{% static 'images/nav-home.svg' %}"
+                                alt=""
+                            />
+                        </a>
                     </li>
                     <li>
-                        <a href="{% url 'network' %}"><img
-                            src="{% static 'images/nav-network.svg' %}"
-                            alt=""
-                        /></a>
-                    </li>
-                    <a href="{% url 'jobs' %}"><li>
-                        <img src="{% static 'images/nav-jobs.svg' %}" alt="" /></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'message' %}"><img
-                            src="{% static 'images/nav-messaging.svg' %}"
-                            alt=""
-                        /></a>
+                        <a href="{% url 'network' %}">
+                            <img
+                                class="network"
+                                src="{% static 'images/nav-network.svg' %}"
+                                alt=""
+                            />
+                        </a>
                     </li>
                     <li>
-                        <a href="{% url 'notification' %}"><img
-                            src="{% static 'images/nav-notifications.svg'%}"
-                            alt=""
+                        <a href="{% url 'jobs' %}">
+                            <img
+                                class="jobs"
+                                src="{% static 'images/nav-jobs.svg' %}"
+                                alt=""
                         /></a>
                     </li>
-                    <li><a href="{% url 'home' %}">
-                        <img
-                            class="user-img"
-                            src="{% static 'images/user.svg' %}"
-                            alt=""
-                        /></a>
+                    <li>
+                        <a href="{% url 'message' %}">
+                            <img
+                                class="message"
+                                src="{% static 'images/nav-messaging.svg' %}"
+                                alt=""
+                            />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'notification' %}">
+                            <img
+                                class="notification"
+                                src="{% static 'images/nav-notifications.svg'%}"
+                                alt=""
+                            />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}">
+                            <img
+                                class="user-img home"
+                                src="{% static 'images/user.svg' %}"
+                                alt=""
+                            />
+                        </a>
                     </li>
                 </ul>
             </nav>
