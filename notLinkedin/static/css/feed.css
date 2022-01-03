@@ -178,6 +178,15 @@ a {
     margin-bottom: 20px;
 }
 
+.Post-card-image {
+    height: auto;
+    display: flex;
+}
+
+.Post-card-image img {
+    margin: auto 0;
+}
+
 .Post-card-header {
     padding: 20px;
     height: 40px;
@@ -253,3 +262,5 @@ hr {
     margin-left: 10px;
     width: 100%;
 }
+
+/* styling for the home page */

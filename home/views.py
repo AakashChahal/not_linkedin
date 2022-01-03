@@ -1,7 +1,14 @@
 from django.shortcuts import render
+from . models import Post, User
 
 def feed(request):
-    return render(request, 'home\\feed.html')
+    posts = Post.objects.all()
+    users = User.objects.all()
+    context = {
+        'posts': posts,
+        'users': users
+    }
+    return render(request, 'home\\feed.html', context)
 
 def network(request):
     return render(request, 'home\\network.html') 

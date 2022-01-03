@@ -21,45 +21,39 @@
         </div>
     </section>
     <section class="posts">
+        {% if posts %} {% for post in posts %}
         <div class="Post-card">
             <div class="Post-card-header">
                 <img
                     src="{% static 'images/user.svg' %}"
                     class="Post-card-user-image"
                 />
-                <a class="Post-card-user-name" href="">User Name</a>
-                <div class="Post-card-time"></div>
+                <a class="Post-card-user-name" href="">{{ post.user }}</a>
+                <div class="Post-card-time">{{ post.post_date.time }}</div>
             </div>
 
             <hr />
 
             <div class="Post-card-image">
-                <img
-                    src="{% static 'images/google.svg' %}"
-                    height="600px"
-                    alt="Test Post 1"
-                />
+                <img src="{{ post.photo_url }}" width="100%" alt="" />
             </div>
 
             <div class="Post-card-content">
-                <p class="Likes">N likes</p>
+                <p class="Likes">{{ post.likes }} likes</p>
                 <p>
-                    <a
-                        class="Post-card-content-user"
-                        href="https://www.instagram.com/rogersbase/"
-                        >User Name</a
-                    >
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Natus provident, aspernatur iste ullam dolorem explicabo.
-                    Atque ea soluta minima quibusdam, maiores in quia.
-                    Laboriosam, excepturi repellendus? Distinctio voluptatum
-                    aperiam quas?
+                    <a class="Post-card-content-user" href="">{{post.user}}</a>
+                    {{post.description}}
+                    <!-- Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                Natus provident, aspernatur iste ullam dolorem explicabo.
+                                Atque ea soluta minima quibusdam, maiores in quia.
+                                Laboriosam, excepturi repellendus? Distinctio voluptatum
+                                aperiam quas? -->
                     <!-- I GOT TO PLAY NINTENDO SWITCH ON #NINTENDO MINUTE! 😱 So happy that I can finally talk about this! @kitellis and @breath0air told me that we were going to be playing <a class="hashtag" href="https://www.instagram.com/explore/tags/poochy/">#Poochy</a> and <a class="hashtag" href="https://www.instagram.com/explore/tags/yoshi/">#Yoshi</a> but ended up surprising me with a private <a class="hashtag" href="https://www.instagram.com/explore/tags/nintendoswitch/">#NintendoSwitch</a> play session. I had the opportunity to play The Legend of <a class="hashtag" href="https://www.instagram.com/explore/tags/zelda/">#Zelda</a> <a class="hashtag" href="https://www.instagram.com/explore/tags/breathofthewild/">#BreathOfTheWild</a> and <a class="hashtag" href="https://www.instagram.com/explore/tags/12switch/">#12Switch</a>, both of which were a ton of fun! Massive thank you to the team at @Nintendo for having me on! I had an absolute blast! 🎉 -->
                 </p>
                 <!-- <p class="comments">Ver los 12 comentarios</p>
-                <br><a class="user-comment" href="https://www.instagram.com/chrisobrien64/">chrisobrien64</a> NO WAY! WAY TO GO ROGER MY BOI</br>
-                <br><a class="user-comment" href="https://www.instagram.com/artie_mcparty/">artie_mcparty</a> ROGER = BEST NINTENDO FAN.</br>
-                <br><a class="user-comment" href="https://www.instagram.com/theealeexj/">theealeexj</a> I JUST TRIED IT OUT TODAY ITS AMAZING</br> -->
+                            <br><a class="user-comment" href="https://www.instagram.com/chrisobrien64/">chrisobrien64</a> NO WAY! WAY TO GO ROGER MY BOI</br>
+                            <br><a class="user-comment" href="https://www.instagram.com/artie_mcparty/">artie_mcparty</a> ROGER = BEST NINTENDO FAN.</br>
+                            <br><a class="user-comment" href="https://www.instagram.com/theealeexj/">theealeexj</a> I JUST TRIED IT OUT TODAY ITS AMAZING</br> -->
                 <hr />
             </div>
 
@@ -68,127 +62,18 @@
                     <i class="fa fa-heart-o fa-2x"></i>
                 </a>
                 <!-- <input
-                    class="comments-input"
-                    type="text"
-                    placeholder="Añade un comentario..."
-                />
-                <a class="footer-action-icons" href="#"
-                    ><i class="fa fa-ellipsis-h"></i
-                ></a> -->
+                                class="comments-input"
+                                type="text"
+                                placeholder="Añade un comentario..."
+                            />
+                            <a class="footer-action-icons" href="#"
+                                ><i class="fa fa-ellipsis-h"></i
+                            ></a> -->
             </div>
         </div>
-        <div class="Post-card">
-            <div class="Post-card-header">
-                <img
-                    src="{% static 'images/user.svg' %}"
-                    class="Post-card-user-image"
-                />
-                <a class="Post-card-user-name" href="">User Name</a>
-                <div class="Post-card-time"></div>
-            </div>
-
-            <hr />
-
-            <div class="Post-card-image">
-                <img
-                    src="{% static 'images/photo.svg' %}"
-                    height="600px"
-                    alt="Test Post 1"
-                />
-            </div>
-
-            <div class="Post-card-content">
-                <p class="Likes">N likes</p>
-                <p>
-                    <a
-                        class="Post-card-content-user"
-                        href="https://www.instagram.com/rogersbase/"
-                        >User Name</a
-                    >
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Natus provident, aspernatur iste ullam dolorem explicabo.
-                    Atque ea soluta minima quibusdam, maiores in quia.
-                    Laboriosam, excepturi repellendus? Distinctio voluptatum
-                    aperiam quas?
-                    <!-- I GOT TO PLAY NINTENDO SWITCH ON #NINTENDO MINUTE! 😱 So happy that I can finally talk about this! @kitellis and @breath0air told me that we were going to be playing <a class="hashtag" href="https://www.instagram.com/explore/tags/poochy/">#Poochy</a> and <a class="hashtag" href="https://www.instagram.com/explore/tags/yoshi/">#Yoshi</a> but ended up surprising me with a private <a class="hashtag" href="https://www.instagram.com/explore/tags/nintendoswitch/">#NintendoSwitch</a> play session. I had the opportunity to play The Legend of <a class="hashtag" href="https://www.instagram.com/explore/tags/zelda/">#Zelda</a> <a class="hashtag" href="https://www.instagram.com/explore/tags/breathofthewild/">#BreathOfTheWild</a> and <a class="hashtag" href="https://www.instagram.com/explore/tags/12switch/">#12Switch</a>, both of which were a ton of fun! Massive thank you to the team at @Nintendo for having me on! I had an absolute blast! 🎉 -->
-                </p>
-                <!-- <p class="comments">Ver los 12 comentarios</p>
-                <br><a class="user-comment" href="https://www.instagram.com/chrisobrien64/">chrisobrien64</a> NO WAY! WAY TO GO ROGER MY BOI</br>
-                <br><a class="user-comment" href="https://www.instagram.com/artie_mcparty/">artie_mcparty</a> ROGER = BEST NINTENDO FAN.</br>
-                <br><a class="user-comment" href="https://www.instagram.com/theealeexj/">theealeexj</a> I JUST TRIED IT OUT TODAY ITS AMAZING</br> -->
-                <hr />
-            </div>
-
-            <div class="Post-card-footer">
-                <a class="footer-action-icons" href="">
-                    <i class="fa fa-heart-o fa-2x"></i>
-                </a>
-                <!-- <input
-                    class="comments-input"
-                    type="text"
-                    placeholder="Añade un comentario..."
-                />
-                <a class="footer-action-icons" href="#"
-                    ><i class="fa fa-ellipsis-h"></i
-                ></a> -->
-            </div>
-        </div>
-        <div class="Post-card">
-            <div class="Post-card-header">
-                <img
-                    src="{% static 'images/user.svg' %}"
-                    class="Post-card-user-image"
-                />
-                <a class="Post-card-user-name" href="">User Name</a>
-                <div class="Post-card-time"></div>
-            </div>
-
-            <hr />
-
-            <div class="Post-card-image">
-                <img
-                    src="{% static 'images/right-icon.svg' %}"
-                    height="600px"
-                    alt="Test Post 1"
-                />
-            </div>
-
-            <div class="Post-card-content">
-                <p class="Likes">N likes</p>
-                <p>
-                    <a
-                        class="Post-card-content-user"
-                        href="https://www.instagram.com/rogersbase/"
-                        >User Name</a
-                    >
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Natus provident, aspernatur iste ullam dolorem explicabo.
-                    Atque ea soluta minima quibusdam, maiores in quia.
-                    Laboriosam, excepturi repellendus? Distinctio voluptatum
-                    aperiam quas?
-                    <!-- I GOT TO PLAY NINTENDO SWITCH ON #NINTENDO MINUTE! 😱 So happy that I can finally talk about this! @kitellis and @breath0air told me that we were going to be playing <a class="hashtag" href="https://www.instagram.com/explore/tags/poochy/">#Poochy</a> and <a class="hashtag" href="https://www.instagram.com/explore/tags/yoshi/">#Yoshi</a> but ended up surprising me with a private <a class="hashtag" href="https://www.instagram.com/explore/tags/nintendoswitch/">#NintendoSwitch</a> play session. I had the opportunity to play The Legend of <a class="hashtag" href="https://www.instagram.com/explore/tags/zelda/">#Zelda</a> <a class="hashtag" href="https://www.instagram.com/explore/tags/breathofthewild/">#BreathOfTheWild</a> and <a class="hashtag" href="https://www.instagram.com/explore/tags/12switch/">#12Switch</a>, both of which were a ton of fun! Massive thank you to the team at @Nintendo for having me on! I had an absolute blast! 🎉 -->
-                </p>
-                <!-- <p class="comments">Ver los 12 comentarios</p>
-                <br><a class="user-comment" href="https://www.instagram.com/chrisobrien64/">chrisobrien64</a> NO WAY! WAY TO GO ROGER MY BOI</br>
-                <br><a class="user-comment" href="https://www.instagram.com/artie_mcparty/">artie_mcparty</a> ROGER = BEST NINTENDO FAN.</br>
-                <br><a class="user-comment" href="https://www.instagram.com/theealeexj/">theealeexj</a> I JUST TRIED IT OUT TODAY ITS AMAZING</br> -->
-                <hr />
-            </div>
-
-            <div class="Post-card-footer">
-                <a class="footer-action-icons" href="">
-                    <i class="fa fa-heart-o fa-2x"></i>
-                </a>
-                <!-- <input
-                    class="comments-input"
-                    type="text"
-                    placeholder="Añade un comentario..."
-                />
-                <a class="footer-action-icons" href="#"
-                    ><i class="fa fa-ellipsis-h"></i
-                ></a> -->
-            </div>
-        </div>
+        {% endfor %} {% else %}
+        <h1>No posts Available</h1>
+        {% endif %}
     </section>
     <!-- <section></section> -->
 </div>
