@@ -8,4 +8,6 @@ urlpatterns = [
     path("jobs", views.jobs, name="jobs"),
     path("home", views.home, name="home"),
     path("message", views.message, name="message"),
+    path('home/post', views.feed, name="post"),
+    path('home/like', views.like, name="like")
 ]

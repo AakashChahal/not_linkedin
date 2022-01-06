@@ -31,9 +31,7 @@
                 />
                 <a class="Post-card-user-name" href="">{{ post.user }}</a>
                 <div class="Post-card-time">
-                    {{ post.post_date.date | naturalday }}
-                    <!--  -->
-                    {{ post.post_date.time }}
+                    {{ post.post_date | naturaltime }}
                 </div>
             </div>
 
@@ -48,11 +46,6 @@
                 <p>
                     <a class="Post-card-content-user" href="">{{post.user}}</a>
                     {{post.description}}
-                    <!-- Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                Natus provident, aspernatur iste ullam dolorem explicabo.
-                                Atque ea soluta minima quibusdam, maiores in quia.
-                                Laboriosam, excepturi repellendus? Distinctio voluptatum
-                                aperiam quas? -->
                     <!-- I GOT TO PLAY NINTENDO SWITCH ON #NINTENDO MINUTE! 😱 So happy that I can finally talk about this! @kitellis and @breath0air told me that we were going to be playing <a class="hashtag" href="https://www.instagram.com/explore/tags/poochy/">#Poochy</a> and <a class="hashtag" href="https://www.instagram.com/explore/tags/yoshi/">#Yoshi</a> but ended up surprising me with a private <a class="hashtag" href="https://www.instagram.com/explore/tags/nintendoswitch/">#NintendoSwitch</a> play session. I had the opportunity to play The Legend of <a class="hashtag" href="https://www.instagram.com/explore/tags/zelda/">#Zelda</a> <a class="hashtag" href="https://www.instagram.com/explore/tags/breathofthewild/">#BreathOfTheWild</a> and <a class="hashtag" href="https://www.instagram.com/explore/tags/12switch/">#12Switch</a>, both of which were a ton of fun! Massive thank you to the team at @Nintendo for having me on! I had an absolute blast! 🎉 -->
                 </p>
                 <!-- <p class="comments">Ver los 12 comentarios</p>
@@ -63,7 +56,7 @@
             </div>
 
             <div class="Post-card-footer">
-                <a class="footer-action-icons" href="">
+                <a class="footer-action-icons like" href="">
                     <i class="fa fa-heart-o fa-2x"></i>
                 </a>
                 <!-- <input
@@ -80,6 +73,13 @@
         <h1>No posts Available</h1>
         {% endif %}
     </section>
-    <!-- <section></section> -->
 </div>
+<script>
+    $(document).ready(function () {
+        $(".like").on("click", function (e) {
+            e.preventDefault();
+            e.target.style.color = "red";
+        });
+    });
+</script>
 {% endblock %}

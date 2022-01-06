@@ -11,7 +11,7 @@ body {
 
 /* styles for navbar */
 
-.nav {
+.nav-bar {
     width: 100vw;
     border-bottom: 1px solid #000;
     background-color: #fff;
@@ -22,7 +22,7 @@ body {
 }
 
 nav {
-    display: flex;
+    display: flex !important; /* //!important is used to overwrite display: block from bootstrap */
     align-items: center;
     padding: 20px;
     /* position: fixed; */
@@ -61,13 +61,15 @@ ul li span {
     /* margin-left: -100px; */
 }
 
-.home-search .search-container input {
+.home-search .search-container .search-box {
     width: 320px;
     padding: 10px;
     padding-left: 25px;
     border: 1px solid black;
     outline: none;
     border-radius: 10px;
+    line-height: 1em !important;
+    font-size: 1em !important;
 }
 
 .home-search .search-container input:focus {

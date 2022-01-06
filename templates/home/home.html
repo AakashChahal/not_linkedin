@@ -1,24 +1,214 @@
-{% extends 'feed_base.html' %} {% load static %} 
+{% extends 'feed_base.html' %} {% load static %} {% load humanize %}
+<!-- empty comment  -->
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}" />
-    <div class="main-box">
-        <button class='input-btn upload' id='input_btn'>
-            <img src="{% static 'images/photo.svg' %}" width="100%" alt="">
-        </button>
-        <img class="cover" id="blah" src="{% static 'images/card-bg.svg' %}">
-        <div class="dp-container">
-            <img class="dp" src="{% static 'images/user.svg' %}">
-        </div>
-        <button class='pen-btn upload'>
-            <i class="fa fa-pencil pen">&nbsp;Post</i>
-        </button>
-        <div class="box">
-            <div class="main-content"> 
-                <h3>User Name</h3>
-                <p class="bio">Short bio</p>
-                <p class="bio content">City, State, Country</p> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<body>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+    />
+    <div class="home-page">
+        <div class="main-box">
+            <button class="input-btn upload" id="input_btn">
+                <img
+                    src="{% static 'images/photo.svg' %}"
+                    width="100%"
+                    alt=""
+                />
+            </button>
+            <img
+                class="cover"
+                id="blah"
+                src="{% static 'images/card-bg.svg' %}"
+            />
+            <div class="dp-container">
+                <img class="dp" src="{% static 'images/user.svg' %}" />
+            </div>
+            <!-- post modal -->
+            <button
+                class="pen-btn upload"
+                data-toggle="modal"
+                data-target="#login-modal"
+            >
+                <i class="fa fa-pencil pen">&nbsp;Post</i>
+            </button>
+            <!-- <div class="login-btn">
+            <a href="" class="button" data-toggle="modal" data-target="#login-modal">Login</a>
+        </div> -->
+
+            <div
+                class="modal fade"
+                id="login-modal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true"
+                style="display: none"
+            >
+                <div class="modal-dialog">
+                    <div class="loginmodal-container">
+                        <h1>Create new Post</h1>
+                        <br />
+                        <form
+                            action="{% url 'post' %}"
+                            method="post"
+                            enctype="multipart/form-data"
+                        >
+                            {% csrf_token %}
+                            <textarea name="description"></textarea>
+                            <input type="file" name="photo" />
+                            <input
+                                type="submit"
+                                name="login"
+                                class="login loginmodal-submit"
+                                value="Post"
+                            />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="main-content">
+                    <h3>User Name</h3>
+                    <p class="bio">Short bio</p>
+                    <p class="bio content">City, State, Country</p>
+                </div>
             </div>
         </div>
+        <section class="posts">
+            {% if users and posts %} {% for user in users %}
+            <!-- empty comment for syntax -->
+            {% for post in posts %} {% if post.user == user %}
+            <div class="Post-card">
+                <div class="Post-card-header">
+                    <img
+                        src="{% static 'images/user.svg' %}"
+                        class="Post-card-user-image"
+                    />
+                    <a class="Post-card-user-name" href="">{{ post.user }}</a>
+                    <div class="Post-card-time">
+                        {{ post.post_date | naturaltime }}
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="Post-card-image">
+                    <img src="{{ post.photo_url }}" width="100%" alt="" />
+                </div>
+
+                <div class="Post-card-content">
+                    <p class="Likes">
+                        <span id="{{ post.pk }}-count">
+                            {{ post.like.count | intword }}
+                        </span>
+                        likes
+                    </p>
+                    <p>
+                        <a class="Post-card-content-user" href=""
+                            >{{post.user}}</a
+                        >
+                        {{post.description}}
+                    </p>
+
+                    <hr />
+                </div>
+
+                <div class="Post-card-footer">
+                    <div>
+                        {% if request.user in post.like.all %}
+                        <a
+                            type="button"
+                            id="{{ post.pk }}"
+                            data-url="{% url 'like' %}"
+                            class="
+                                footer-action-icons
+                                like
+                                fa fa-heart fa-2x
+                                float-right
+                                likebtn
+                            "
+                            style="
+                                font-size: 1.5rem;
+                                text-decoration: none;
+                                color: red;
+                            "
+                            name="{{ post.title }}"
+                        ></a>
+                        {% else %}
+                        <a
+                            type="button"
+                            id="{{ post.pk }}"
+                            data-url="{% url 'like' %}"
+                            class="
+                                footer-action-icons
+                                like
+                                fa fa-heart fa-2x
+                                float-right
+                                likebtn
+                            "
+                            style="
+                                font-size: 1.5rem;
+                                text-decoration: none;
+                                color: gray;
+                            "
+                            name="{{ post.title }}"
+                        ></a>
+                        {% endif %}
+                    </div>
+                    <!-- <input
+                                class="comments-input"
+                                type="text"
+                                placeholder="Añade un comentario..."
+                            />
+                            <a class="footer-action-icons" href="#"
+                                ><i class="fa fa-ellipsis-h"></i
+                            ></a> -->
+                </div>
+            </div>
+            {% else %}
+            <h1>No posts Available</h1>
+            {% endif %} {% endfor %} {% endfor %} {% else %}
+            <h1>No posts Available</h1>
+            {% endif %}
+        </section>
     </div>
+    <script>
+        $(document).ready(function () {
+            $(".like").click(function (event) {
+                event.preventDefault();
+                var ansid = $(this).attr("id");
+                var count = parseInt($("#" + ansid + "-count").text());
+                // console.log(ansid);
+                $.ajax({
+                    url: $(this).data("url"),
+                    type: "POST",
+                    data: {
+                        post_id: ansid,
+                        csrfmiddlewaretoken: "{{ csrf_token }}",
+                        action: "post",
+                    },
+                    success: function (response) {
+                        if (response["flag"]) {
+                            $("#" + ansid).css("color", "red");
+
+                            // increase likes
+                            $("#" + ansid + "-count").html(count + 1);
+                        } else {
+                            $("#" + ansid).css("color", "gray");
+                            // decrease likes
+                            $("#" + ansid + "-count").html(count - 1);
+                        }
+                    },
+                    error: function (rs, e) {
+                        console.log(rs);
+                        console.log(e);
+                    },
+                });
+            });
+        });
+    </script>
 </body>
 {% endblock %}

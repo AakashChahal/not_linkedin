@@ -3,7 +3,8 @@ from datetime import datetime
 
 class User(models.Model):
     name = models.CharField(max_length=200)
-    photo = models.ImageField(upload_to=f'photos/users/')
+    username = models.CharField(default="", max_length=200, unique=True)
+    photo = models.ImageField(upload_to='photos/users/')
     bio = models.TextField(blank=True)
     email = models.CharField(max_length=50)
     is_employer = models.BooleanField(default=False)
@@ -22,7 +23,7 @@ class Post(models.Model):
     description = models.TextField(blank=True)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
     post_date = models.DateTimeField(default=datetime.now)
-    likes = models.IntegerField()
+    like = models.ManyToManyField(User, related_name="user_likes")
 
     @property
     def photo_url(self):
