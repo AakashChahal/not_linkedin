@@ -1,4 +1,5 @@
-{% extends 'feed_base.html' %} {% load static %} {% block content %}
+{% extends 'feed_base.html' %} {% load static %} {% load humanize %} {% comments
+%} {% block content %}
 <div class="main">
     <section class="profile-card">
         <div class="card">
@@ -29,7 +30,11 @@
                     class="Post-card-user-image"
                 />
                 <a class="Post-card-user-name" href="">{{ post.user }}</a>
-                <div class="Post-card-time">{{ post.post_date.time }}</div>
+                <div class="Post-card-time">
+                    {{ post.post_date.date | naturalday }}
+                    <!--  -->
+                    {{ post.post_date.time }}
+                </div>
             </div>
 
             <hr />
@@ -39,7 +44,7 @@
             </div>
 
             <div class="Post-card-content">
-                <p class="Likes">{{ post.likes }} likes</p>
+                <p class="Likes">{{ post.likes | intword }} likes</p>
                 <p>
                     <a class="Post-card-content-user" href="">{{post.user}}</a>
                     {{post.description}}

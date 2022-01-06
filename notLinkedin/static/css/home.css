@@ -14,11 +14,10 @@ h3 {
     font-weight: 500;
     font-size: x-large;
 }
-h4 {
+.bio {
     font-weight: 500;
     font-size: 14px;
-    margin: 0;
-    margin-bottom: 20px;
+    margin: 20px auto;
 }
 .main-box {
     max-width: 900px;
@@ -30,16 +29,20 @@ h4 {
     position: relative;
     border: 1px solid rgba(0, 0, 0, 0.08);
 }
-.input-file {
-    display: none;
-}
+
 .input-btn {
     background-color: white;
     color: #fff;
     border: 1px solid #8c8c8c;
-    padding: 10px;
-    border-radius: 20px;
-    margin: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.input-btn img {
+    width: 30px;
+    height: 30px;
 }
 .input-btn:hover {
     background-color: #c9cccb;
@@ -81,93 +84,15 @@ h4 {
     left: 4px;
     position: relative;
     top: 5px;
-    background-color: white;
+    /* background-color: white; */
     padding: 5px;
     margin-top: -100px;
     margin-left: 22px;
-    margin-bottom: -4px;
+    margin-bottom: 15px;
 }
-.cam {
-    color: #0a66c2;
-    cursor: pointer;
-}
+
 .pen {
     color: rgba(0, 0, 0, 0.6);
     font-size: x-large;
     cursor: pointer;
-}
-.but {
-    width: 107px;
-    height: 32px;
-    border-radius: 20px;
-    outline: none;
-    border: none;
-    background: #0a66c2;
-    color: white;
-    font-size: large;
-    text-align: center;
-    margin-left: 20px;
-}
-.but:hover {
-    background-color: #203e5d;
-}
-.but1 {
-    height: 35px;
-    border-radius: 20px;
-    outline: none;
-    border: 1px solid black;
-    background: transparent;
-    font-size: medium;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.6);
-    margin-left: 10px;
-    padding: 0px 20px;
-}
-.clr {
-    color: rgba(0, 0, 0, 0.6);
-}
-.but1:hover {
-    border: 2px solid black;
-    background: #ddd;
-}
-.box {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: -23px;
-}
-ul {
-    list-style: none;
-}
-li {
-    color: #0a66c2;
-    font-weight: 600;
-}
-.content {
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-.icon {
-    height: 50px;
-    width: 50px;
-}
-.align {
-    display: flex;
-}
-.cmpy {
-    font-size: 16px;
-    font-family: inherit;
-    color: black;
-}
-span {
-    margin-right: 14px;
-    margin-left: 10px;
-}
-.current {
-    width: 34%;
-    margin-left: 70px;
-}
-.clg {
-    position: relative;
-    top: 15px;
 }

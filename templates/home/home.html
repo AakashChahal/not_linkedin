@@ -1,38 +1,24 @@
-{% extends 'feed_base.html' %} {% load static %}
+{% extends 'feed_base.html' %} {% load static %} 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}" />
-<div class="main-box">
-
-      <input type='file' class='input-file' id="imgInp">
-      <button class='input-btn upload' id='input_btn'><i class="fa fa-camera cam"></i></button>
-     <img class="cover" id="blah" src="{% static 'images/card-bg.svg' %}">
-     <div class="dp-container"><img class="dp" src="{% static 'images/user.svg' %}"></div>
-     <button class='pen-btn upload'><i class="fa fa-pencil pen"></i></button>
-
-
-     <div class="box">
-     <div class="main-content"> 
-        <h3>User Name</h3>
-        <h4>Short bio</h4>
-        <div class="content">
-        <h4>Thoothukudi, Tamil Nadu, India</h4> 
-        <ul class="content">
-         <li><span>97 connection</span></li>
-         <li><span>contact info</span></li>
-      </ul>
-   </div>
-     </div>
-     <div class="current">
-         <ul>
-            <li class="align"><img src="https://lh3.googleusercontent.com/WQuOogmAxhiYTCzHwxyJfq70_Fg5PIJ7zryuFM8dix-jG-6NwgOYtf2OZR6Qq8YSIAOe6g=s85" class="icon"><span class="cmpy clg">Gadaget Tech<span></span></li>
-            <li class="align"><img src="https://lh3.googleusercontent.com/6ih0PuKeKquQ0poB6akePuTvfTRgOkmrSW6nSU24sehKODQoXWL6ek5d1VWzVADrkq9U=s59" class="icon"><span class="cmpy">Dr.Sivanthi Aditanar College Of Engineering<span></span></li>
-         </ul>
-     </div>
-     </div>
-     <button class="but">Open to <i class="fa fa-caret-down"></i></button>
-     <button class="but1">Add Profile section <i class="fa fa-caret-down clr" ></i></button>
-     <button class="but1">More...</button>
-   </div>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class="main-box">
+        <button class='input-btn upload' id='input_btn'>
+            <img src="{% static 'images/photo.svg' %}" width="100%" alt="">
+        </button>
+        <img class="cover" id="blah" src="{% static 'images/card-bg.svg' %}">
+        <div class="dp-container">
+            <img class="dp" src="{% static 'images/user.svg' %}">
+        </div>
+        <button class='pen-btn upload'>
+            <i class="fa fa-pencil pen">&nbsp;Post</i>
+        </button>
+        <div class="box">
+            <div class="main-content"> 
+                <h3>User Name</h3>
+                <p class="bio">Short bio</p>
+                <p class="bio content">City, State, Country</p> 
+            </div>
+        </div>
+    </div>
 </body>
 {% endblock %}
