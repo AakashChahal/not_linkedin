@@ -21,3 +21,31 @@ document
                 .getElementById("label--password")
                 .classList.remove("transform");
     });
+
+document
+    .getElementById("input--conf_password")
+    .addEventListener("focus", function () {
+        document
+            .getElementById("label--conf_password")
+            .classList.add("transform");
+    });
+
+document
+    .getElementById("input--conf_password")
+    .addEventListener("blur", function () {
+        if (document.getElementById("input--conf_password").value === "")
+            document
+                .getElementById("label--conf_password")
+                .classList.remove("transform");
+    });
+
+document.getElementById("input--bio").addEventListener("focus", function () {
+    document.getElementById("label--bio").classList.add("transform");
+});
+
+document.getElementById("input--bio").addEventListener("blur", function () {
+    if (document.getElementById("input--bio").value === "")
+        document.getElementById("label--bio").classList.remove("transform");
+});
+
+setTimeout(() => $("#message").fadeOut("slow"), 1000);

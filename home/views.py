@@ -1,26 +1,34 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from .models import Post, User
 from .forms import PostForm
+from login.views import index
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 def feed(request):
-    if request.POST:
-        print(request.user)
-        # user = User.objects.get(username=request.user.username)
-        user = User.objects.get(id=2) 
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            instance = Post(photo=request.FILES['photo'], description=request.POST['description'], user=user)
-            print(instance)
-            instance.save()
-
-
     posts = Post.objects.all().order_by('-post_date')
     users = User.objects.all()
 
+    # if not request.user in users:
+    #     return redirect(index)
+
+    if request.POST:
+        print(request.user)
+        # user = User.objects.get(username=request.user.username)
+        user = users[0]
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = Post(photo=request.FILES['photo'], description=request.POST['description'], user=user)
+            # print(instance)
+            instance.save()
+
+
+
     context = {
         'posts': posts,
-        'users': users
+        'users': users,
+        'user': request.user
     }
     return render(request, 'home\\feed.html', context)
 

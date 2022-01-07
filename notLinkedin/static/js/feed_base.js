@@ -9,11 +9,11 @@ for (let index = document.location.href.length - 1; index >= 0; index--) {
 pageTitle = pageTitle.split("").reverse().join("");
 // console.log(pageTitle);
 
-if (!pageTitle) document.title = "notLinkedin";
-else
-    document.title = `${
-        pageTitle.at(0).toUpperCase() + pageTitle.slice(1)
-    } | notLinkedin`;
+// if (!pageTitle) document.title = "notLinkedin";
+// else
+//     document.title = `${
+//         pageTitle.at(0).toUpperCase() + pageTitle.slice(1)
+//     } | notLinkedin`;
 
 const currPageIcon = document.querySelector(`.${pageTitle}`);
 // currPageIcon.closest("li").style.borderBottom = "2px solid black";

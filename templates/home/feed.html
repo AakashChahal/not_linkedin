@@ -1,5 +1,6 @@
 {% extends 'feed_base.html' %} {% load static %} {% load humanize %} {% comments
 %} {% block content %}
+<title>Feed | notLinkedin</title>
 <div class="main">
     <section class="profile-card">
         <div class="card">
@@ -18,6 +19,8 @@
             <span class="user-name">
                 <a href="{% url 'home' %}">User Name</a>
                 <p>Short bio / Headline</p>
+                <!-- <a href="{% url 'home' %}">{{ user.name }}</a>
+                <p>{{ user.bio }}</p> -->
             </span>
         </div>
     </section>

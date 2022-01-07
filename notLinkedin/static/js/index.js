@@ -21,3 +21,5 @@ document
                 .getElementById("label--password")
                 .classList.remove("transform");
     });
+
+setTimeout(() => $("#message").fadeOut("slow"), 1000);

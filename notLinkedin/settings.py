@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'notLinkedin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'notLinkedinDB',
+        'NAME': 'newDB',
         'USER': 'postgres',
         'PASSWORD': 'root',
         'HOST': 'localhost'
@@ -137,3 +137,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Media folders settings
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+AUTH_USER_MODEL = "home.User"
