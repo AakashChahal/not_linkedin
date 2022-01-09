@@ -7,11 +7,10 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 def feed(request):
-    posts = Post.objects.all().order_by('-post_date')
     users = User.objects.all()
 
-    # if not request.user in users:
-    #     return redirect(index)
+    if not request.user in users or request.user.is_staff:
+        return redirect(index)
 
     if request.POST:
         print(request.user)
@@ -24,6 +23,7 @@ def feed(request):
             instance.save()
 
 
+    posts = Post.objects.all().order_by('-post_date')
 
     context = {
         'posts': posts,

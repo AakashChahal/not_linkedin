@@ -78,16 +78,16 @@
             </div>
         </div>
         <section class="posts">
-            {% if users and posts %} {% for user in users %}
-            <!-- empty comment for syntax -->
-            {% for post in posts %} {% if post.user == user %}
+            {% if users and posts %} {% for post in posts %}
             <div class="Post-card">
                 <div class="Post-card-header">
                     <img
                         src="{% static 'images/user.svg' %}"
                         class="Post-card-user-image"
                     />
-                    <a class="Post-card-user-name" href="">{{ post.user }}</a>
+                    <a class="Post-card-user-name" href=""
+                        >{{ request.user }}</a
+                    >
                     <div class="Post-card-time">
                         {{ post.post_date | naturaltime }}
                     </div>
@@ -168,9 +168,7 @@
                             ></a> -->
                 </div>
             </div>
-            {% else %}
-            <h1>No posts Available</h1>
-            {% endif %} {% endfor %} {% endfor %} {% else %}
+            {% endfor %} {% else %}
             <h1>No posts Available</h1>
             {% endif %}
         </section>

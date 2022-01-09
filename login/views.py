@@ -15,7 +15,7 @@ def index(request):
 
         user = auth.authenticate(email=email, password=password)
         print("user: ", user)
-        if user is not None:
+        if user is not None and not user.is_staff:
             auth.login(request, user)
             messages.success(request, "You are logged in")
             return redirect('feed')
@@ -44,10 +44,10 @@ def signup(request):
             messages.error(request, "User already exists")
             return redirect('signup')
 
-        user = User.objects.create_user(name=name, email=email, bio=bio, photo=photo)
+        user = User.objects.create_user(name=name, email=email, bio=bio, photo=photo, password=password)
         user.save()
         auth.login(request, user)
-        messages.success(request, 'You are now logged in!')
+        messages.success(request, 'You are registered! You can log in now!')
         return redirect('index')
         
     return render(request, "login\signup.html")

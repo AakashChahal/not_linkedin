@@ -65,6 +65,15 @@ body {
     transition: 0.2s all;
 }
 
+.form__label--floating--image {
+    position: absolute;
+    font-size: 1.125rem;
+    color: rgba(0, 0, 0, 0.9);
+    padding: 10px 0 0 0px;
+    margin-left: -14%;
+    transition: 0.2s all;
+}
+
 .form__label--floating.transform {
     transform: translateY(-10px);
     font-size: 0.9rem;

@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'notLinkedin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'newDB',
+        'NAME': 'notLinkedinDB',
         'USER': 'postgres',
         'PASSWORD': 'root',
         'HOST': 'localhost'

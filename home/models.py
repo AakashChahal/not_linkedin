@@ -36,9 +36,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_employer = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     # username = models.CharField(default="", max_length=200, unique=True)
+    USERNAME_FIELD = 'email'
     objects = UserManager()
 
-    USERNAME_FIELD = 'email'
 
     @property
     def photo_url(self):

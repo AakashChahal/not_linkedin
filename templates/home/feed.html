@@ -12,15 +12,15 @@
             />
             <img
                 class="user-image"
-                src="{% static 'images/user.svg' %}"
+                src="{{ user.photo_url }}"
                 alt=""
                 width="25%"
             />
             <span class="user-name">
-                <a href="{% url 'home' %}">User Name</a>
-                <p>Short bio / Headline</p>
-                <!-- <a href="{% url 'home' %}">{{ user.name }}</a>
-                <p>{{ user.bio }}</p> -->
+                <!-- <a href="{% url 'home' %}">User Name</a>
+                <p>Short bio / Headline</p> -->
+                <a href="{% url 'home' %}">{{ user.name }}</a>
+                <p>{{ user.bio }}</p>
             </span>
         </div>
     </section>
@@ -32,7 +32,7 @@
                     src="{% static 'images/user.svg' %}"
                     class="Post-card-user-image"
                 />
-                <a class="Post-card-user-name" href="">{{ post.user }}</a>
+                <a class="Post-card-user-name" href="">{{ request.user }}</a>
                 <div class="Post-card-time">
                     {{ post.post_date | naturaltime }}
                 </div>
@@ -45,23 +45,62 @@
             </div>
 
             <div class="Post-card-content">
-                <p class="Likes">{{ post.likes | intword }} likes</p>
+                <p class="Likes">
+                    <span id="{{ post.pk }}-count">
+                        {{ post.like.count | intword }}
+                    </span>
+                    likes
+                </p>
                 <p>
                     <a class="Post-card-content-user" href="">{{post.user}}</a>
                     {{post.description}}
-                    <!-- I GOT TO PLAY NINTENDO SWITCH ON #NINTENDO MINUTE! 😱 So happy that I can finally talk about this! @kitellis and @breath0air told me that we were going to be playing <a class="hashtag" href="https://www.instagram.com/explore/tags/poochy/">#Poochy</a> and <a class="hashtag" href="https://www.instagram.com/explore/tags/yoshi/">#Yoshi</a> but ended up surprising me with a private <a class="hashtag" href="https://www.instagram.com/explore/tags/nintendoswitch/">#NintendoSwitch</a> play session. I had the opportunity to play The Legend of <a class="hashtag" href="https://www.instagram.com/explore/tags/zelda/">#Zelda</a> <a class="hashtag" href="https://www.instagram.com/explore/tags/breathofthewild/">#BreathOfTheWild</a> and <a class="hashtag" href="https://www.instagram.com/explore/tags/12switch/">#12Switch</a>, both of which were a ton of fun! Massive thank you to the team at @Nintendo for having me on! I had an absolute blast! 🎉 -->
                 </p>
-                <!-- <p class="comments">Ver los 12 comentarios</p>
-                            <br><a class="user-comment" href="https://www.instagram.com/chrisobrien64/">chrisobrien64</a> NO WAY! WAY TO GO ROGER MY BOI</br>
-                            <br><a class="user-comment" href="https://www.instagram.com/artie_mcparty/">artie_mcparty</a> ROGER = BEST NINTENDO FAN.</br>
-                            <br><a class="user-comment" href="https://www.instagram.com/theealeexj/">theealeexj</a> I JUST TRIED IT OUT TODAY ITS AMAZING</br> -->
+
                 <hr />
             </div>
 
             <div class="Post-card-footer">
-                <a class="footer-action-icons like" href="">
-                    <i class="fa fa-heart-o fa-2x"></i>
-                </a>
+                <div>
+                    {% if request.user in post.like.all %}
+                    <a
+                        type="button"
+                        id="{{ post.pk }}"
+                        data-url="{% url 'like' %}"
+                        class="
+                            footer-action-icons
+                            like
+                            fa fa-heart fa-2x
+                            float-right
+                            likebtn
+                        "
+                        style="
+                            font-size: 1.5rem;
+                            text-decoration: none;
+                            color: red;
+                        "
+                        name="{{ post.title }}"
+                    ></a>
+                    {% else %}
+                    <a
+                        type="button"
+                        id="{{ post.pk }}"
+                        data-url="{% url 'like' %}"
+                        class="
+                            footer-action-icons
+                            like
+                            fa fa-heart fa-2x
+                            float-right
+                            likebtn
+                        "
+                        style="
+                            font-size: 1.5rem;
+                            text-decoration: none;
+                            color: gray;
+                        "
+                        name="{{ post.title }}"
+                    ></a>
+                    {% endif %}
+                </div>
                 <!-- <input
                                 class="comments-input"
                                 type="text"
