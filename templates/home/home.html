@@ -24,7 +24,7 @@
                 src="{% static 'images/card-bg.svg' %}"
             />
             <div class="dp-container">
-                <img class="dp" src="{% static 'images/user.svg' %}" />
+                <img class="dp" src="{{ request.user.photo }}" />
             </div>
             <!-- post modal -->
             <button
@@ -71,14 +71,17 @@
             </div>
             <div class="box">
                 <div class="main-content">
-                    <h3>User Name</h3>
-                    <p class="bio">Short bio</p>
-                    <p class="bio content">City, State, Country</p>
+                    <h3>{{ request.user.name }}</h3>
+                    <p class="bio">{{ request.user.bio }}</p>
+                    <!-- <p class="bio content">City, State, Country</p> -->
                 </div>
             </div>
         </div>
         <section class="posts">
-            {% if users and posts %} {% for post in posts %}
+            {% if posts %} {% for post in posts %}
+            <!-- Empty Comment -->
+            <!-- <h1>{{ post.user }} and {{ request.user }}</h1> -->
+            {% if post.user == request.user %}
             <div class="Post-card">
                 <div class="Post-card-header">
                     <img
@@ -123,13 +126,7 @@
                             type="button"
                             id="{{ post.pk }}"
                             data-url="{% url 'like' %}"
-                            class="
-                                footer-action-icons
-                                like
-                                fa fa-heart fa-2x
-                                float-right
-                                likebtn
-                            "
+                            class="footer-action-icons like fa fa-heart fa-2x float-right likebtn"
                             style="
                                 font-size: 1.5rem;
                                 text-decoration: none;
@@ -142,13 +139,7 @@
                             type="button"
                             id="{{ post.pk }}"
                             data-url="{% url 'like' %}"
-                            class="
-                                footer-action-icons
-                                like
-                                fa fa-heart fa-2x
-                                float-right
-                                likebtn
-                            "
+                            class="footer-action-icons like fa fa-heart fa-2x float-right likebtn"
                             style="
                                 font-size: 1.5rem;
                                 text-decoration: none;
@@ -168,7 +159,9 @@
                             ></a> -->
                 </div>
             </div>
-            {% endfor %} {% else %}
+            {% else %}
+            <!-- <h1>No posts yet!</h1> -->
+            {% endif %} {% endfor %} {% else %}
             <h1>No posts Available</h1>
             {% endif %}
         </section>

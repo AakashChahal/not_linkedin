@@ -9,13 +9,13 @@ User = get_user_model()
 def feed(request):
     users = User.objects.all()
 
-    if not request.user in users or request.user.is_staff:
+    if not request.user in users:
         return redirect(index)
 
     if request.POST:
         print(request.user)
-        # user = User.objects.get(username=request.user.username)
-        user = users[0]
+        user = User.objects.get(email=request.user.email)
+        # user = users[0]
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             instance = Post(photo=request.FILES['photo'], description=request.POST['description'], user=user)

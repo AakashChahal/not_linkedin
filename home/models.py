@@ -43,7 +43,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     @property
     def photo_url(self):
         if self.photo and hasattr(self.photo, 'url'):
-            return self.photo.url
+            new_url = "photos/users/" + str(self.photo)
+            return new_url
 
     def __str__(self):
         return self.name

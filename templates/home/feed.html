@@ -32,7 +32,7 @@
                     src="{% static 'images/user.svg' %}"
                     class="Post-card-user-image"
                 />
-                <a class="Post-card-user-name" href="">{{ request.user }}</a>
+                <a class="Post-card-user-name" href="">{{ post.user }}</a>
                 <div class="Post-card-time">
                     {{ post.post_date | naturaltime }}
                 </div>
@@ -66,13 +66,7 @@
                         type="button"
                         id="{{ post.pk }}"
                         data-url="{% url 'like' %}"
-                        class="
-                            footer-action-icons
-                            like
-                            fa fa-heart fa-2x
-                            float-right
-                            likebtn
-                        "
+                        class="footer-action-icons like fa fa-heart fa-2x float-right likebtn"
                         style="
                             font-size: 1.5rem;
                             text-decoration: none;
@@ -85,13 +79,7 @@
                         type="button"
                         id="{{ post.pk }}"
                         data-url="{% url 'like' %}"
-                        class="
-                            footer-action-icons
-                            like
-                            fa fa-heart fa-2x
-                            float-right
-                            likebtn
-                        "
+                        class="footer-action-icons like fa fa-heart fa-2x float-right likebtn"
                         style="
                             font-size: 1.5rem;
                             text-decoration: none;
@@ -118,9 +106,36 @@
 </div>
 <script>
     $(document).ready(function () {
-        $(".like").on("click", function (e) {
-            e.preventDefault();
-            e.target.style.color = "red";
+        $(".like").click(function (event) {
+            event.preventDefault();
+            var ansid = $(this).attr("id");
+            var count = parseInt($("#" + ansid + "-count").text());
+            // console.log(ansid);
+            $.ajax({
+                url: $(this).data("url"),
+                type: "POST",
+                data: {
+                    post_id: ansid,
+                    csrfmiddlewaretoken: "{{ csrf_token }}",
+                    action: "post",
+                },
+                success: function (response) {
+                    if (response["flag"]) {
+                        $("#" + ansid).css("color", "red");
+
+                        // increase likes
+                        $("#" + ansid + "-count").html(count + 1);
+                    } else {
+                        $("#" + ansid).css("color", "gray");
+                        // decrease likes
+                        $("#" + ansid + "-count").html(count - 1);
+                    }
+                },
+                error: function (rs, e) {
+                    console.log(rs);
+                    console.log(e);
+                },
+            });
         });
     });
 </script>
